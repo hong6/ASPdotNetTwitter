@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "ASP.Net Twitter demo";
+    var uname = @ViewBag.screen_name;    
+}
+
+<h2>@ViewBag.Message</h2>
+
+<ul id="Tweets">
+</ul>
+
+<p id="Status">Loading...</p>
+
+<p>
+	<a id="More" href="#">More &gt;</a>
+</p>
+
+<script>
+
+    // TODO: Refactor inline JS into a namespaced class.
+
+    var earliest_id = null;
+
+    $(function () {
+        setupUtils();
+        setupUI();
+        displayTweets();
+    });
+
+    function setupUtils() {
+
+        String.prototype.linkify = function () {
+            return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&;\?\/.=]+/g, function (m) {
+                return m.link(m);
+            });
+        };
+
+        String.prototype.linkuser = function () {
+            return this.replace(/[@@]+[A-Za-z0-9-_]+/g, function (u) {
+                return u.link("https://twitter.com/" + u.replace("@@", ""));
+            });
+        };
+
+        String.prototype.linktag = function () {
+            return this.replace(/[]+[A-Za-z0-9-_]+/, function (t) {
+                return t;
+            });
+        };
+    }
+
+    function setupUI() {
+
+        $("#Status").toggle();
+
+        $("#More").click(function (event) {
+            event.preventDefault();
+            displayTweets();
+        });
+
+    }
+
+    function displayTweets() {
+
+        $("#Status").toggle();
+
+        var js_uname = '@uname';     
+        var count = 10;
+
+        $.getJSON("/TwitterAPIProxy/UserTimeline?screen_name=" + js_uname + "&count=" + count + "&exclude_replies=false&include_rts=true", function (data) {          
+            if (data == null) {
+                $("#Tweets").append("<li>Invalid API response -- ensure the Twitter API credentials in web.config are the correct values for your own Twitter account.</li>");
+            }                   
+
+            $(data).each(function (i, v) {
+                //console.log(this.text);                
+                $("#Tweets").append(getTweetHtml(this));
+            });
+
+            $("#Status").toggle();
+        });
+    }
+
+    function getTweetHtml(tweetJson) {    
+
+        var id_str;
+        var screenName;
+        var text;
+        if (tweetJson.retweeted_status == null) {
+            id_str = tweetJson.id_str;
+            screenName = tweetJson.user.screen_name;
+            text = tweetJson.text;
+        } else {
+            id_str = tweetJson.retweeted_status.id_str;
+            screenName = tweetJson.retweeted_status.user.screen_name;
+            text = tweetJson.retweeted_status.text;
+        }
+
+        earliest_id = tweetJson.id_str;
+
+        return "\t<li>@@" + screenName + " - " + text + "</li>\n";
+    }
+
+</script>

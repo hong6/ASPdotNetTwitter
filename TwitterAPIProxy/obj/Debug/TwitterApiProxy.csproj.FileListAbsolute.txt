@@ -1,0 +1,9 @@
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\bin\TwitterApiProxy.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\bin\TwitterApiProxy.pdb
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\bin\TwitterApiClient.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\bin\LinqToTwitter.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\bin\Newtonsoft.Json.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\bin\TwitterApiClient.pdb
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\obj\Debug\TwitterApiProxy.csprojResolveAssemblyReference.cache
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\obj\Debug\TwitterApiProxy.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIProxy\obj\Debug\TwitterApiProxy.pdb

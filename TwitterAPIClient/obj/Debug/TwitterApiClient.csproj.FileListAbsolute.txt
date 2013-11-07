@@ -1,0 +1,6 @@
+C:\Git_test\ASPdotNetTwitter\TwitterAPIClient\bin\Debug\TwitterApiClient.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIClient\bin\Debug\TwitterApiClient.pdb
+C:\Git_test\ASPdotNetTwitter\TwitterAPIClient\bin\Debug\LinqToTwitter.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIClient\bin\Debug\Newtonsoft.Json.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIClient\obj\Debug\TwitterApiClient.dll
+C:\Git_test\ASPdotNetTwitter\TwitterAPIClient\obj\Debug\TwitterApiClient.pdb
